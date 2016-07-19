@@ -1,32 +1,35 @@
-DreamHouse Lock
+DreamHouse ロック
 ---------------
 
-This sample app provides an easy way to control a [Lockitron Lock](https://lockitron.com/) from the DreamHouse app.  Check out a demo:
+このサンプルアプリを使用すると、DreamHouse アプリから [Lockitron 社のロック](https://lockitron.com/)を簡単に制御できるようになります。デモをご覧ください。
 
 [![Demo](http://img.youtube.com/vi/GHIhTDFI_OY/0.jpg)](http://www.youtube.com/watch?v=GHIhTDFI_OY)
 
-To get started your will need a Lockitron Bolt with the Bridge device that connects the Bolt to the internet.
+まず初めに、Lockitron Bolt と、Bolt をインターネットに接続するためのブリッジデバイスが必要です。
 
-Setup:
+セットアップ：
 
-1. Setup the Bold and Bridge
-1. Create a new API integration app: [https://api.lockitron.com/](https://api.lockitron.com/)
-1. Copy the testing access token from the newly created app
-1. Get your lock's ID from the [Lockitron Dashboard](https://lockitron.com/dashboard) by selecting your lock and copying the ID from the URL
+1. Bolt およびブリッジをセットアップします。
+1. API 連携アプリを新しく作成します（[https://api.lockitron.com/](https://api.lockitron.com/)）。
+1. 新しく作成したアプリからテスト用のアクセストークンをコピーします。
+1. [Lockitron ダッシュボード](https://lockitron.com/dashboard)にアクセスしてロックの ID を取得します。それには、ロックを選択して URL から ID をコピーします。
 
-        https://lockitron.com/dashboard/<YOUR LOCK ID>
+        https://lockitron.com/dashboard/<ここがロックの ID になります>
 
-Run Locally:
+ローカルで実行：
 
-1. Run the app in dev mode: `LOCK=<LOCK ID> ACCESS_TOKEN=<ACCESS_TOKEN> npm run dev`
-1. Toggle the lock: `http://localhost:5000/toggle`
+1. アプリを dev モードで実行します。
+`LOCK=<ロック ID> ACCESS_TOKEN=<アクセストークン> npm run dev`
+1. ロックのスイッチを切り替えます。
+`http://localhost:5000/toggle`
 
-Run on Heroku:
+Heroku で実行：
 
-1. Deploy the app: [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-1. Toggle the lock: `http://<YOUR HEROKU APP>.herokuapp.com/toggle`
+1. アプリをデプロイします。[![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+1. ロックのスイッチを切り替えます。
+`http://<Heroku アプリ>.herokuapp.com/toggle`
 
 
-### App Architecture
+### アプリのアーキテクチャ
 
-This app is a simple proxy for the Lockitron API to toggle a lock open and closed.  It encapsulates the Lock ID and Access Token for demo purposes.  For a production app you will want to use OAuth to manage API access.  The source for the app is in the `server.js` file.  The app is a Node.js and Express app that handles requests and then calls the Lockitron API to perform the specified action.
+このアプリは、Lockitron API でロックの開閉を切り替えるための単純なプロキシです。デモ用にロック ID とアクセストークンをカプセル化しています。実際の環境で使用するアプリでは、OAuth を使用して API アクセスを管理する方が好ましいでしょう。このアプリのソースは、`server.js` ファイルにあります。このアプリは Node.js と Express で作成されており、リクエストを処理して、Lockitron API を呼び出し、指定されたアクションを実行します。
